@@ -7,7 +7,8 @@ PRODUCT_PACKAGES += \
      PixysSettings \
      Turbo \
      CameraRoll \
-     OmniRecord
+     OmniRecord \
+     WeatherClient
 
 # Markup libs
 ifeq ($(TARGET_ARCH),arm64)
@@ -53,3 +54,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
      persist.sys.wfd.virtual=0 \
      persist.debug.wfd.enable=1 \
      persist.sys.wfd.virtual=0
+
+# Weather
+PRODUCT_COPY_FILES += \
+    vendor/pixys/prebuilt/common/etc/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml
