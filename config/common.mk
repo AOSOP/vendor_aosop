@@ -1,37 +1,8 @@
+include vendor/pixys/config/pixys_version.mk
+
 PRODUCT_BRAND ?= Pixys
 
-PIXYS_VERSION_NUMBER := v2.3
-
-ifndef PIXYS_BUILD_TYPE
-PIXYS_BUILD_TYPE := UNOFFICIAL
-
-PRODUCT_GENERIC_PROPERTIES += \
-    ro.pixys.buildtype=unofficial
-endif
-
-ifeq ($(PIXYS_BUILD_TYPE), OFFICIAL)
-PRODUCT_GENERIC_PROPERTIES += \
-    ro.pixys.buildtype=official
-
-PRODUCT_PACKAGES += \
-    Updater
-
-endif
-
-PIXYS_VERSION := PixysOS-$(PIXYS_VERSION_NUMBER)-$(shell date -u +%Y%m%d)-$(PIXYS_BUILD)-$(PIXYS_BUILD_TYPE)
-PIXYS_MOD_VERSION := $(PIXYS_VERSION)
-
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.pixys.version=$(PIXYS_VERSION) \
-  ro.pixys.releasetype=$(PIXYS_BUILD_TYPE) \
-  ro.modversion=$(PIXYS_MOD_VERSION)
-
-PIXYS_DISPLAY_VERSION := $(PIXYS_VERSION)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.pixys.display.version=$(PIXYS_DISPLAY_VERSION)
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
